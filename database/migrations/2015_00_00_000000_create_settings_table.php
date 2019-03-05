@@ -38,7 +38,8 @@ class CreateSettingsTable extends Migration
             $table->unsignedInteger('user_id')->default(0);
             $table->string('key');
             $table->text('value');
-            $table->timestamps();
+            $table->timestamp('created_at')->nullable()->useCurrent();
+            $table->timestamp('updated_at')->nullable();
 
             $table->unique(['user_id', 'key']);
         });
